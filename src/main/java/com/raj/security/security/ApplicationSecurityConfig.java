@@ -15,6 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
+import java.util.concurrent.TimeUnit;
+
 import static com.raj.security.security.ApplicationUserPermission.*;
 import static com.raj.security.security.ApplicationUserRole.*;
 
@@ -42,7 +44,10 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/courses",true);
+                .defaultSuccessUrl("/courses",true)
+                .and()
+                .rememberMe().tokenValiditySeconds((int)TimeUnit.DAYS.toSeconds(21))
+                .key("SomeSecuredKeyName");
     }
 
     @Override
