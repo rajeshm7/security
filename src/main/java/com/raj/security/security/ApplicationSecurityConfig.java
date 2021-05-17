@@ -49,15 +49,18 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     protected UserDetailsService userDetailsService(){
         UserDetails studentUser = User.builder().username("student")
                 .password(passwordEncoder.encode("password"))
-                .roles(STUDENT.name())
+                //.roles(STUDENT.name())
+                .authorities(STUDENT.getGrantedAuthorities())
                 .build();
         UserDetails adminUser = User.builder().username("admin")
                 .password(passwordEncoder.encode("password123"))
-                .roles(ADMIN.name())
+                //.roles(ADMIN.name())
+                .authorities(ADMIN.getGrantedAuthorities())
                 .build();
         UserDetails adminTraineeUser = User.builder().username("admin")
                 .password(passwordEncoder.encode("password123"))
-                .roles(ADMINTRAINEE.name())
+                //.roles(ADMINTRAINEE.name())
+                .authorities(ADMINTRAINEE.getGrantedAuthorities())
                 .build();
         return new InMemoryUserDetailsManager(studentUser, adminUser);
     }
