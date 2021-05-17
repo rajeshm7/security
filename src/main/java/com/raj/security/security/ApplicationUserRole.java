@@ -9,7 +9,8 @@ import static com.raj.security.security.ApplicationUserPermission.*;
 
 public enum ApplicationUserRole {
     STUDENT(Sets.newHashSet()),
-    ADMIN(Sets.newHashSet(STUDENT_WRITE, STUDENT_READ, ADMIN_READ, ADMIN_WRITE));
+    ADMIN(Sets.newHashSet(STUDENT_WRITE, STUDENT_READ, ADMIN_READ, ADMIN_WRITE)),
+    ADMINTRAINEE(Sets.newHashSet(STUDENT_READ, ADMIN_READ));
 
     private final Set<ApplicationUserPermission> permissions;
 
