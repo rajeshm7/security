@@ -10,7 +10,7 @@ import java.util.Optional;
 
 import static com.raj.security.security.ApplicationUserRole.STUDENT;
 
-@Repository("Fake")
+@Repository("fake")
 public class FakeApplicationUserDaoService implements  ApplicationUserDao{
 
     private PasswordEncoder passwordEncoder;
@@ -32,7 +32,7 @@ public class FakeApplicationUserDaoService implements  ApplicationUserDao{
                 new ApplicationUser(
                         STUDENT.getGrantedAuthorities(),
                      "student" ,
-                     "password",
+                     passwordEncoder.encode("password"),
                      true,
                      true,
                      true,
@@ -41,7 +41,7 @@ public class FakeApplicationUserDaoService implements  ApplicationUserDao{
                 new ApplicationUser(
                         STUDENT.getGrantedAuthorities(),
                         "admin" ,
-                        "password",
+                        passwordEncoder.encode("password"),
                         true,
                         true,
                         true,
@@ -50,7 +50,7 @@ public class FakeApplicationUserDaoService implements  ApplicationUserDao{
                 new ApplicationUser(
                         STUDENT.getGrantedAuthorities(),
                         "adminTrainee" ,
-                        "password",
+                        passwordEncoder.encode("password"),
                         true,
                         true,
                         true,
